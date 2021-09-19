@@ -701,7 +701,7 @@ export function generateExterns(
   function debugLocationStr(node: ts.Node, namespace: ReadonlyArray<string>) {
     // Use a regex to grab the filename without a path, to make the output stable
     // under bazel where sandboxes use different paths.
-    return namespace.join('.') || node.getSourceFile().fileName.replace(/.*[/\\]/, '');
+    return namespace.join('.') || node.getSourceFile().fileName.replace(/^.*[/\\]/, '');
   }
 
   function visitor(node: ts.Node, namespace: ReadonlyArray<string>) {
